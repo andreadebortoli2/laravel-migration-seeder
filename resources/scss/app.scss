@@ -1,3 +1,23 @@
 @use './partials/Header';
 
 @import '~bootstrap/scss/bootstrap';
+
+.train-logo {
+    font-size: 5rem;
+    text-align: center;
+    height: fit-content;
+}
+
+.card-body {
+    position: relative;
+    height: 100%;
+
+    ul {
+        padding: 2rem 0;
+    }
+
+    small {
+        position: absolute;
+        bottom: 1rem;
+    }
+}
