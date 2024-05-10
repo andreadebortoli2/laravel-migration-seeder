@@ -17,6 +17,7 @@ class PageController extends Controller
     public function show()
     {
         $todayTrains = Train::where('departure_time', '>=', date(today()))->get();
+        // $todayTrains = Train::where('departure_time', '>=', '2024-05-10%')->get();
         return view('guests.show', compact('todayTrains'));
     }
 }

@@ -18,7 +18,7 @@
                                         {{ $train->is_deleted ? '🚫' : '🚄' }}
                                     </div>
                                     <p class="card-text">
-                                        <small class="text-muted">{{ $train->vagons_number }}</small>
+                                        <small class="text-muted">Number of vagons: {{ $train->vagons_number }}</small>
                                     </p>
                                 </div>
                             </div>
@@ -27,12 +27,31 @@
                                     <h5 class="card-title">{{ $train->departure_station }} - {{ $train->arrival_station }}
                                     </h5>
                                     <ul class="card-text list-unstyled">
-                                        <li>Departure: {{ $train->departure_time }}</li>
-                                        <li>Arrival: {{ $train->arrival_time }}</li>
+                                        <li class="{{ $train->is_deleted ? 'text-muted' : '' }}">Departure:
+                                            {{ $train->departure_time }}</li>
+                                        <li class="{{ $train->is_deleted ? 'text-muted' : '' }}">
+                                            Arrival:
+                                            @if ($train->is_deleted)
+                                            @elseif (!$train->is_in_time && !$train->is_deleted)
+                                                ???
+                                            @elseif ($train->is_in_time && !$train->is_deleted)
+                                                {{ $train->arrival_time }}
+                                            @endif
+                                        </li>
                                     </ul>
                                     <p class="card-text">
-                                        <small
-                                            class="text-muted">{{ $train->is_in_time ? 'The train is in perfect time' : 'The train will arrive a little late, sorry for the inconvenient' }}</small>
+                                        <small class="text-muted">
+                                            @if ($train->is_deleted)
+                                            @elseif (!$train->is_in_time && !$train->is_deleted)
+                                                The train will arrive a little late, sorry for the inconvenient
+                                            @elseif ($train->is_in_time && !$train->is_deleted)
+                                                @if ($train->arrival_time < now())
+                                                    The train was in perfect time
+                                                @else
+                                                    The train is in perfect time
+                                                @endif
+                                            @endif
+                                        </small>
                                     </p>
                                 </div>
                             </div>
