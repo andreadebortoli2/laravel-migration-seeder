@@ -1,0 +1,15 @@
+.logo {
+    padding: 0 4rem;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+li {
+    a {
+        text-decoration: none;
+
+        :hover {
+            background-color: paleturquoise;
+        }
+    }
+}
