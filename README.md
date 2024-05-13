@@ -23,4 +23,4 @@ Create il modello Model relativo alla migrazione che avete predisposto al fine d
  
 ## BONUS:
 
-- Implementare il seeder tramite FakerPHP
+- Implementare il seeder tramite FakerPHP ✓

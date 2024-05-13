@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('departure_station', 20);
             $table->dateTime('departure_time')->nullable();
             $table->dateTime('arrival_time')->nullable();
-            $table->smallInteger('train_id')->nullable();
-            $table->tinyInteger('vagons_number')->nullable();
+            $table->unsignedSmallInteger('train_id')->nullable();
+            $table->unsignedTinyInteger('vagons_number')->nullable();
             $table->boolean('is_in_time')->default(1);
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
